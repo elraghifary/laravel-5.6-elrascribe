@@ -24,44 +24,13 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-sm-12">
                     @card
                         @slot('title')
-                            Add
-                        @endslot
-                
-                        @if (session('error'))
-                            @alert(['type' => 'danger'])
-                                {!! session('error') !!}
-                            @endalert
-                        @endif
-​
-                        <form role="form" action="{{ route('transcript.store') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="project">Project</label>
-                                <input type="text" 
-                                name="project"
-                                class="form-control {{ $errors->has('project') ? 'is-invalid':'' }}" id="project" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="idi">Project</label>
-                                <input type="text" 
-                                name="idi"
-                                class="form-control {{ $errors->has('idi') ? 'is-invalid':'' }}" id="idi" required>
-                            </div>
-                        @slot('footer')
-                            <div class="card-footer">
-                                <button class="btn btn-primary">Save</button>
-                            </div>
-                        </form>
-                        @endslot
-                    @endcard    
-                </div>
-                <div class="col-md-8">
-                    @card
-                        @slot('title')
-                            Transcript List
+                            <a href="{{ route('transcript.create') }}" 
+                                class="btn btn-primary btn-sm">
+                                <i class="fa fa-edit"></i> Add Transcript
+                            </a>
                         @endslot
                         
                         @if (session('success'))
@@ -71,12 +40,15 @@
                         @endif
                         
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         <td>#</td>
                                         <td>Project</td>
                                         <td>IDI</td>
+                                        <td>Date</td>
+                                        <td>Day / Time</td>
+                                        <td>User</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -86,6 +58,9 @@
                                         <td>{{ $row->id }}</td>
                                         <td>{{ $row->project }}</td>
                                         <td>{{ $row->idi }}</td>
+                                        <td>{{ $row->date }}</td>
+                                        <td>{{ $row->day }} / {{ $row->time }}</td>
+                                        <td>{{ $row->user->name }}</td>
                                         <td>
                                             <form action="{{ route('transcript.destroy', $row->id) }}" method="POST">
                                                 @csrf
@@ -97,11 +72,14 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="4" class="text-center">No records found</td>
+                                        <td colspan="7" class="text-center">No records found</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
                             </table>
+                            <div class="float-right">
+                                {!! $transcripts->links() !!}
+                            </div>
                         </div>
                         @slot('footer')
 ​

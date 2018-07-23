@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/transcript', 'TranscriptController')->except([
-    'create', 'show'
-]);
+Route::resource('/transcript', 'TranscriptController');
