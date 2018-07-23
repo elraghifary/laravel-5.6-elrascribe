@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('transcript.index') }}" class="nav-link">
                     <i class="nav-icon fa fa-file-text"></i>
                     <p>Transcripts</p>
                 </a>

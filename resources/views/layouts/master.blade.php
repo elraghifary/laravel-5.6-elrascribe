@@ -7,7 +7,7 @@
 
     @yield('title')
 
-    <link rel="stylesheet" href="{{ asset('packages/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
 </head>
@@ -40,8 +40,8 @@
         @include('layouts.partials.footer')
     </div>
 
-<script src="{{ asset('packages/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('packages/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
 </body>
 </html>
