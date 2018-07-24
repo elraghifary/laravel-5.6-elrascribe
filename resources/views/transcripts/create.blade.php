@@ -77,8 +77,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Body</label>
-                                <textarea name="body" id="body" 
-                                    cols="5" rows="5" 
+                                <textarea name="body" id="body"
                                     class="form-control {{ $errors->has('body') ? 'is-invalid':'' }}"></textarea>
                                 <p class="text-danger">{{ $errors->first('body') }}</p>
                             </div>
@@ -106,4 +105,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <!-- ckeditor -->
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('plugins/ckeditor/plugins/ckwebspeech/plugin.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('body');
+        CKEDITOR.config.autoParagraph = false;
+    </script>
 @endsection
