@@ -14,7 +14,7 @@
         .interim {
             color: gray;
         }
-        
+
         #results {
             font-size: 14px;
             font-weight: bold;
@@ -131,6 +131,7 @@
                                 <button class="btn btn-primary btn-sm">
                                     <i class="fa fa-send"></i> Save
                                 </button>
+                                <a href="{{ route('transcript.index') }}" class="btn btn-default btn-sm" role="button"> Back</a>
                             </div>
                         </form>
                         @slot('footer')

@@ -44,7 +44,7 @@
                         @endif
                         
                         <div class="table-responsive">
-                            <table id="transcripts" class="table table-hover table-bordered">
+                            <table id="transcripts" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <td>#</td>
@@ -57,7 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($transcripts as $row)
+                                    @foreach ($transcripts as $row)
                                     <tr>
                                         <td>{{ $row->id }}</td>
                                         <td>{{ $row->project }}</td>
@@ -74,16 +74,12 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="7" class="text-center">No records found</td>
-                                    </tr>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
-                            <div class="float-right">
+                            {{-- <div class="float-right">
                                 {!! $transcripts->links() !!}
-                            </div>
+                            </div> --}}
                         </div>
                         @slot('footer')
 ​
@@ -102,7 +98,42 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#transcripts').DataTable();
-        } );
+            var table = $('#transcripts').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "responsive": true,
+                "autoWidth": true,
+                "pageLength": 10,
+                "dom": '<"rowBfr>tlip',
+                "order": [[ 3, "desc" ]],
+                "buttons": [
+                    'colvis',
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Transcripts',
+                        exportOptions: {
+                            columns: [1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Transcripts',
+                        exportOptions: {
+                            columns: [1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        title: 'Transcripts',
+                        exportOptions: {
+                            columns: [1, 2, 3, 4, 5]
+                        }
+                    }
+                ],
+            });
+        });
     </script>
 @endsection

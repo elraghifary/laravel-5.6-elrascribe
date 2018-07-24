@@ -133,6 +133,7 @@
                                 <button class="btn btn-primary btn-sm">
                                     <i class="fa fa-send"></i> Update
                                 </button>
+                                <a href="{{ route('transcript.index') }}" class="btn btn-default btn-sm" role="button"> Back</a>
                             </div>
                         </form>
                         @slot('footer')

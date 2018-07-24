@@ -10,13 +10,15 @@ class TranscriptController extends Controller
 {
     public function index()
     {
-        $transcripts = Transcript::with('user')->orderBy('created_at', 'DESC')->paginate(10);
-            return view('transcripts.index', compact('transcripts'));
+        $transcripts = Transcript::with('user')->orderBy('created_at', 'DESC')->get();
+
+        return view('transcripts.index', compact('transcripts'));
     }
 
     public function create()
     {
         $users = User::orderBy('name', 'ASC')->get();
+
         return view('transcripts.create', compact('users'));
     }
 
