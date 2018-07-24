@@ -4,6 +4,10 @@
     <title>TRANSCRIPTS - Elrascribe</title>
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-colvis-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.css"/>
+@endsection
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -40,7 +44,7 @@
                         @endif
                         
                         <div class="table-responsive">
-                            <table class="table table-hover table-bordered">
+                            <table id="transcripts" class="table table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         <td>#</td>
@@ -89,4 +93,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-colvis-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#transcripts').DataTable();
+        } );
+    </script>
 @endsection
